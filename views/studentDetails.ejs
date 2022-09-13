@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!-- ======= Head ======= -->
+<%-include('./layout/head.ejs') %>
+<!-- End Head -->    
+  </head>
+<!-- ======= Header ======= -->
+<body>
+    <header id="header" class="fixed-top">
+<%-include('./layout/header.ejs') %>
+ </header>
+  
+<!-- End Header -->
+
+<!-- <main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs" data-aos="fade-in">
+  <div class="container">
+    <h2>Welcome <%= studentData.name %> </h2>
+    <p>
+      Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id
+      aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam
+      consequatur laboriosam nemo harum praesentium.
+    </p>
+  </div>
+</div>
+
+<!-- End Breadcrumbs -->
+
+<!-- ======= Student Details Section ======= -->
+
+  <div class="container" data-aos="fade-up">
+    <div class="row mt-5">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <form method="POST" action="/updateStudent" enctype="multipart/form-data">
+          <div class="row">
+            <div class="form-group">
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                placeholder="Your Name"
+                value="<%=studentData.name%>"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group mt-3">
+              <textarea
+                class="form-control"
+                name="address"
+                rows="5"
+                placeholder="Address"
+                
+              >
+<%=studentData.address%></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group mt-3">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="email"
+                placeholder="Your Email"
+                value="<%=studentData.email%>"
+                required
+              />
+            </div>
+            <div class="col-md-6 form-group mt-3">
+              <input
+                type="text"
+                class="form-control"
+                name="phone"
+                id="phone"
+                placeholder="Your Phone No"
+                maxlength="10"
+                value="<%=studentData.phone%>"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+              <div class="form-group mt-3">
+                <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                  Gender
+                </legend>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="inlineRadio1"
+                    value="male"
+                    <%= studentData.gender == 'male' ? 'checked' : '' %>
+                  />
+                  <label class="form-check-label" for="inlineRadio1"
+                    >Male</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="inlineRadio2"
+                    value="female"
+                    <%= studentData.gender == 'female' ? 'checked' : '' %>
+                  />
+                  <label class="form-check-label" for="inlineRadio2"
+                    >Female</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="inlineRadio3"
+                    value="notsay"
+                    <%= studentData.gender == 'notsay'? 'checked' : '' %>
+
+                  />
+                  <label class="form-check-label" for="inlineRadio3"
+                    >Not to Say</label
+                  >
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6 form-group mt-3">
+              <% const cityArr = ['Howrah','Kolkata','Delhi','Chennai','Ahmedabad','Srinagar'] %> 
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                name="city"
+              >
+                <option>--Select City--</option>
+                 <% for( let index = 0; index < cityArr.length; index++ ) { 
+                let selected = ( cityArr[index] == studentData.city ) ? "selected" : "";
+                %>
+                   <option value="<%=cityArr[index] %>" <%=selected %>><%=cityArr[index] %></option>
+              <% } %>
+              </select>
+            </div>
+            <div class="col-md-6 form-group mt-3">
+              <% const stateArr = ['WB','Gujrat','Tamilnadu','Uttarpradesh','J&K'] %> 
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                name="state"
+              >
+              <option>--Select State--</option>
+              <% for( let index = 0; index < stateArr.length; index++ ) { 
+                let selected = ( stateArr[index] == studentData.state ) ? "selected" : "";
+                %>
+                   <option value="<%=stateArr[index] %>" <%=selected %>><%=stateArr[index] %></option>
+              <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group mt-3">
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                name="class"
+              >
+                <option>--Class--</option>
+                <% for(let i=1; i<=12; i++){
+                  let selected = (studentData.class == i) ? 'selected' : '';
+                %>
+                <option value="<%=i%>" <%=selected %>><%=i%></option>
+                <%}%>
+              </select>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+               
+
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                name="rollno"
+              >
+                <option>--RollNo--</option>
+                <% for(let i=1; i<=60; i++){
+                  let selected = (studentData.rollno == i) ? 'selected' : '';
+                  %>
+                <option value="<%=i%>" <%=selected %>><%=i%></option>
+                <%}%>
+              </select>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+              <% const sectionArr = ['A','B','C','D'] %>
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                name="section"
+              >
+                <option>--Section--</option>
+                <% for( let index = 0; index < sectionArr.length; index++ ) { 
+                let selected = ( sectionArr[index] == studentData.section ) ? "selected" : "";
+                %>
+                   <option value="<%=sectionArr[index] %>" <%=selected %>><%=sectionArr[index] %></option>
+              <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group mt-3">
+              
+              <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                Hobby
+              </legend>
+              
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="hobby"
+                  id="inlinecheck1"
+                  value="Reading"
+                  <%= studentData.hobby.includes('Reading') ? 'checked' : ''%>
+                />
+                <label class="form-check-label" for="inlinecheck1"
+                  >Reading</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="hobby"
+                  id="inlinecheck2"
+                  value="Dancing"
+                  <%= studentData.hobby.includes('Dancing') ? 'checked' : ''%>
+
+                />
+                <label class="form-check-label" for="inlinecheck1"
+                  >Dancing</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="hobby"
+                  id="inlinecheck3"
+                  value="Painting"
+                  <%= studentData.hobby.includes('Painting') ? 'checked' : ''%>
+
+                />
+                <label class="form-check-label" for="inlinecheck3"
+                  >Painting</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="hobby"
+                  id="inlinecheck4"
+                  value="Other"
+                   <%= studentData.hobby.includes('Other') ? 'checked' : ''%>
+
+                />
+                <label class="form-check-label" for="inlinecheck4">Other</label>
+              </div>
+            </div>
+          </div>
+                  <div class="row">
+                  <div class="col-md-6 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Course
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="course"
+                      name="course"
+                    >
+                      <option>--Course--</option>
+                         <% for(let i=0; i<courseData.length; i++){
+                           let selected = ( courseData[i].name == studentData.course.name ) ? "selected" : "";
+                           console.log(selected);
+                          %>
+                      <option value="<%=courseData[i]._id%>" <%=selected%>><%=courseData[i].name%></option>
+                      <%}%>
+                   
+                    </select>
+                  </div>
+                  <div class="col-md-6 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Price
+                    </legend>
+                    <p id="price"><%=studentData.course.price%></p>
+                  </div>
+                </div>
+
+              <div class="row">
+              <div class="form-group mt-3">
+                <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                  Image
+                </legend>
+                  <input
+                      type="file"
+                      name="image"
+                      class="form-control"
+                      id="image"
+                      placeholder=""
+                      
+                    />
+                <img
+                  src="/<%=studentData.image%>"
+                  alt="user-image"
+                  width="150"
+                  class="img-thumbnail mt-1"
+                />
+              </div>
+              <input type="hidden" name="oldImage" value="<%= studentData.image %>" />
+            </div>
+          <input type="hidden" name="s_id" value="<%=studentData._id%>" />
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+<!-- End Details Section -->
+</main> 
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+<%-include('./layout/footer.ejs')%>
+<script>
+   $(document).ready(function(){
+       jQuery('#course').change(function(){
+          const id=jQuery(this).val();
+         jQuery.ajax({
+					type:'post',
+					url:'/getCourse',
+					data:'id='+id,
+					success:function(result){
+						
+            let coursePrice = result.course.price;
+            jQuery('#price').html(`<input type="text" class="form-control" value="${coursePrice}" readonly/>`);
+					}
+				});
+        })
+      })
+</script>

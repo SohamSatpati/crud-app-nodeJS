@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ======= Head ======= -->
+    <%-include('./layout/head.ejs') %>
+    <!-- End Head -->
+  </head>
+  <!-- ======= Header ======= -->
+  <body>
+    <header id="header" class="fixed-top">
+      <%-include('./layout/header.ejs') %>
+    </header>
+
+    <main id="main">
+      <!-- ======= Breadcrumbs ======= -->
+      <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+          <h2>Registration</h2>
+          <p>
+            Est dolorum ut non facere possimus quibusdam eligendi voluptatem.
+            Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis
+            ipsam aperiam consequatur laboriosam nemo harum praesentium.
+          </p>
+        </div>
+      </div>
+      <!-- End Breadcrumbs -->
+
+      <!-- ======= Registration Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+          <div class="row mt-5">
+            <!-- <div class="col-lg-4"></div> -->
+            <div class="col-lg-6 mx-auto mt-4">
+              <form method="POST" action="/addStudent" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="form-group">
+                     <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Name
+                    </legend>
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      id="name"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group mt-3">
+                     <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      AboutYou
+                    </legend>
+                    <textarea
+                      class="form-control"
+                      name="address"
+                      rows="5"
+                      placeholder="About Yourself"
+                      maxlength="255"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group mt-3">
+                     <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Email
+                    </legend>
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Your Email"
+                      required
+                    />
+                    <p id="emailError"></p>
+                  </div>
+                  <div class="col-md-6 form-group mt-3">
+                     <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Phone
+                    </legend>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="phone"
+                      id="phone"
+                      placeholder="Your Phone No"
+                      maxlength="10"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Gender
+                    </legend>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="gender"
+                        id="inlineRadio1"
+                        value="male"
+                      />
+                      <label class="form-check-label" for="inlineRadio1"
+                        >Male</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="gender"
+                        id="inlineRadio2"
+                        value="female"
+                      />
+                      <label class="form-check-label" for="inlineRadio2"
+                        >Female</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="gender"
+                        id="inlineRadio3"
+                        value="notsay"
+                        checked
+                      />
+                      <label class="form-check-label" for="inlineRadio3"
+                        >Not to Say</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group mt-3">
+                     <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      City
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      name="city"
+                    >
+                      <option>--Select City--</option>
+                      <option value="Howrah">Howrah</option>
+                      <option value="Kolkata">Kolkata</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Ahmedabad">Ahmedabad</option>
+                      <option value="Srinagar">Srinagar</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      State
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      name="state"
+                    >
+                      <option>--Select State--</option>
+
+                      <option value="WB">West Bengal</option>
+                      <option value="Gujrat">Gujrat</option>
+                      <option value="Tamilnadu">Tamilnadu</option>
+                      <option value="Uttarpradesh">Uttarpradesh</option>
+                      <option value="J&K">Jammu&Kashmir</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Class
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      name="class"
+                    >
+                      <option>--Class--</option>
+                      <% for(let i=1; i<=12; i++){%>
+                      <option value="<%=i%>"><%=i%></option>
+                      <%}%>
+                    </select>
+                  </div>
+                  <div class="col-md-4 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Rollno
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      name="rollno"
+                    >
+                      <option>--RollNo--</option>
+                      <% for(let i=1; i<=60; i++){%>
+                      <option value="<%=i%>"><%=i%></option>
+                      <%}%>
+                    </select>
+                  </div>
+                  <div class="col-md-4 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Section
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      name="section"
+                    >
+                      <option>--Section--</option>
+
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Hobby
+                    </legend>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="hobby"
+                        id="inlinecheck1"
+                        value="Reading"
+                      />
+                      <label class="form-check-label" for="inlinecheck1"
+                        >Reading</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="hobby"
+                        id="inlinecheck2"
+                        value="Dancing"
+                      />
+                      <label class="form-check-label" for="inlinecheck1"
+                        >Dancing</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="hobby"
+                        id="inlinecheck3"
+                        value="Painting"
+                      />
+                      <label class="form-check-label" for="inlinecheck3"
+                        >Painting</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="hobby"
+                        id="inlinecheck4"
+                        value="Other"
+                      />
+                      <label class="form-check-label" for="inlinecheck4"
+                        >Other</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                 <div class="row">
+                  <div class="col-md-6 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Course
+                    </legend>
+                    <select
+                      class="form-control"
+                      id="course"
+                      name="course"
+                    >
+                      <option>--Course--</option>
+                         <% for(let i=0; i<courseData.length; i++){%>
+                      <option value="<%=courseData[i]._id%>"><%=courseData[i].name%></option>
+                      <%}%>
+                   
+                    </select>
+                  </div>
+                  <div class="col-md-6 form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Price
+                    </legend>
+                    <p id="price"></p>
+                  </div>
+                </div>
+                 <div class="row">
+                  <div class="form-group mt-3">
+                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">
+                      Image
+                    </legend>
+                    <input
+                      type="file"
+                      name="image"
+                      class="form-control"
+                      id="image"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <button type="submit" class="btn btn-success btn-lg">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- <div class="col-lg-4"></div> -->
+          </div>
+        </div>
+      </section>
+      <!-- End Registration Section -->
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <%-include('./layout/footer.ejs')%>
+      <!-- End Footer -->
+    </footer>
+    <script>
+      $(document).ready(function(){
+        jQuery('#email').blur(function(){
+         const email = jQuery(this).val().toLowerCase();
+         jQuery.ajax({
+					type:'post',
+					url:'/getEmail',
+					data:'email='+email,
+					success:function(result){
+						const responseEmail = result.emailExists;
+            console.log(responseEmail);
+            
+           if(responseEmail === true){
+             jQuery('#email').focus();
+             jQuery('#emailError').html(`<strong style="color:red">Email Already Exists.Try Other</strong>`);
+             
+           }else{
+             jQuery('#emailError').html("");
+           }
+            
+					}
+				});
+        })
+
+        jQuery('#course').change(function(){
+          const id=jQuery(this).val();
+         jQuery.ajax({
+					type:'post',
+					url:'/getCourse',
+					data:'id='+id,
+					success:function(result){
+						
+            let coursePrice = result.course.price;
+            jQuery('#price').html(`<input type="text" class="form-control" value="${coursePrice}" readonly/>`);
+					}
+				});
+        })
+      })
+    </script>
+  </body>
+</html>
